@@ -5,7 +5,10 @@ import { TicketStatus } from "@prisma/client";
 import httpStatus from "http-status";
 import * as jwt from "jsonwebtoken";
 import supertest from "supertest";
-import { createEnrollmentWithAddress, createUser, createTicketType, createTicket } from "../factories";
+import { 
+  createEnrollmentWithAddress, createUser, 
+  createTicketType, createTicket
+} from "../factories";
 import { cleanDb, generateValidToken } from "../helpers";
 
 beforeAll(async () => {
@@ -106,7 +109,7 @@ describe("GET /tickets", () => {
 
       expect(response.status).toEqual(httpStatus.NOT_FOUND);
     });
-
+    
     it("should respond with status 404 when user doesnt have a ticket yet", async () => {
       const user = await createUser();
       const token = await generateValidToken(user);
